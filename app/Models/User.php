@@ -50,4 +50,8 @@ class User extends Authenticatable
     ];
 
 
+    public function membership()
+    {
+        return $this->hasMany(Membership::class, 'user_id');
+    }
 }

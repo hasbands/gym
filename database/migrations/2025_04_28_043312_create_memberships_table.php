@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('master_paket_id')->nullable();
             $table->foreignId('master_suplemen_id')->nullable();
+            $table->integer('jumlah_suplemen')->nullable();
             $table->date('mulai');
             $table->date('selesai');
             $table->string('metode_pembayaran');

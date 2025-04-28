@@ -25,4 +25,11 @@
             <div class="menu-title">WHATSAPP API</div>
         </a>
     </li>
+    <li class="menu-label">MEMBERSHIP</li>
+    <li>
+        <a href="/add-membership">
+            <div class="parent-icon"><i class='bx bx-user-plus'></i></div>
+            <div class="menu-title">ADD MEMBERSHIP</div>
+        </a>
+    </li>
 </ul>

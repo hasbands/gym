@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\{
     MasterSuplemenController,
     MasterPaketController,
     WhatsappApiController,
+    AddMembershipController,
 };
 use App\Http\Controllers\web\{
     WebController,
@@ -29,6 +30,14 @@ use App\Http\Controllers\{
 |
 */
 
+// CEK STATUS MEMBERSHIP
+Route::get('cekstatus', [AddMembershipController::class, 'cekstatus'])->name('add-membership.cekstatus');
+// CEK STATUS MEMBERSHIP
+
+// SEND MESSAGE
+Route::get('sendmessage', [AddMembershipController::class, 'sendmessage'])->name('add-membership.sendmessage');
+// SEND MESSAGE
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
 Route::post('register', [RegisterController::class, 'register'])->name('register');
@@ -37,7 +46,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //user
 // Route::group(['middleware' => ['role:user']], function () {
-    Route::get('/', [WebController::class, 'index'])->name('web.home');
+Route::get('/', [WebController::class, 'index'])->name('web.home');
 // });
 //user
 
@@ -49,5 +58,6 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('masterPaket', MasterPaketController::class);
     Route::get('whatsappApi', [WhatsappApiController::class, 'index'])->name('whatsappApi.index');
     Route::post('whatsappApi', [WhatsappApiController::class, 'storeorupdate'])->name('whatsappApi.storeorupdate');
+    Route::resource('add-membership', AddMembershipController::class);
 });
 //admin
