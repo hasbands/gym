@@ -14,6 +14,9 @@ use App\Http\Controllers\admin\{
 };
 use App\Http\Controllers\web\{
     WebController,
+    ListPaketController,
+    TransaksiController,
+    RiwayatTransaksiController,
 };
 
 use App\Http\Controllers\{
@@ -45,11 +48,6 @@ Route::post('register', [RegisterController::class, 'register'])->name('register
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-//user
-// Route::group(['middleware' => ['role:user']], function () {
-Route::get('/', [WebController::class, 'index'])->name('web.home');
-// });
-//user
 
 
 //admin
@@ -63,3 +61,16 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('paket-harian', PaketHarianController::class);
 });
 //admin
+
+//user
+// Route::group(['middleware' => ['role:user']], function () {
+Route::get('/', [WebController::class, 'index'])->name('web.home');
+Route::get('/listpaket', [ListPaketController::class, 'index'])->name('web.listpaket');
+Route::get('/tentang-kami', [WebController::class, 'about'])->name('web.about');
+Route::get('/transaksi/{id}', [TransaksiController::class, 'transaksi'])->name('web.transaksi');
+Route::post('/add-membership', [TransaksiController::class, 'addMembership'])->name('web.add-membership');
+Route::get('/transaksi-detail/{id}', [TransaksiController::class, 'transaksi_detail'])->name('web.transaksi_detail');
+Route::get('/transaksi/success/{order_id}', [TransaksiController::class, 'success'])->name('web.success_membership');
+Route::get('/riwayat-transaksi', [RiwayatTransaksiController::class, 'index'])->name('web.riwayat_transaksi');
+// });
+//user
