@@ -30,6 +30,13 @@
         <a href="/add-membership">
             <div class="parent-icon"><i class='bx bx-user-plus'></i></div>
             <div class="menu-title">ADD MEMBERSHIP</div>
+            </a>
+        </li>
+        <li class="menu-label">PAKET HARIAN</li>
+        <li>
+            <a href="/paket-harian">
+                <div class="parent-icon"><i class='bx bx-calendar'></i></div>
+            <div class="menu-title">PAKET HARIAN</div>
         </a>
     </li>
 </ul>

@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\{
     MasterPaketController,
     WhatsappApiController,
     AddMembershipController,
+    PaketHarianController,
 };
 use App\Http\Controllers\web\{
     WebController,
@@ -59,5 +60,6 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('whatsappApi', [WhatsappApiController::class, 'index'])->name('whatsappApi.index');
     Route::post('whatsappApi', [WhatsappApiController::class, 'storeorupdate'])->name('whatsappApi.storeorupdate');
     Route::resource('add-membership', AddMembershipController::class);
+    Route::resource('paket-harian', PaketHarianController::class);
 });
 //admin

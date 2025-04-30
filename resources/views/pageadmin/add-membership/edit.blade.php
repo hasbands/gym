@@ -11,7 +11,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">Membership</li>
-                            <li class="breadcrumb-item active" aria-current="page">Tambah Membership</li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Membership</li>
                         </ol>
                     </nav>
                 </div>
@@ -24,18 +24,21 @@
                     <div class="card border-top border-0 border-4 border-primary">
                         <div class="card-body p-5">
                             <div class="card-title d-flex align-items-center">
-                                <div><i class="bx bx-plus-circle me-1 font-22 text-primary"></i></div>
-                                <h5 class="mb-0 text-primary">Tambah Membership</h5>
+                                <div><i class="bx bx-edit me-1 font-22 text-primary"></i></div>
+                                <h5 class="mb-0 text-primary">Edit Membership</h5>
                             </div>
                             <hr>
-                            <form action="{{ route('add-membership.store') }}" method="POST" class="row g-3">
+                            <form action="{{ route('add-membership.update', $membership->id) }}" method="POST" class="row g-3">
                                 @csrf
+                                @method('PUT')
                                 <div class="col-md-12">
                                     <label for="user_id" class="form-label">Pilih Member</label>
                                     <select class="form-select" name="user_id" id="user_id" required>
                                         <option selected disabled>Pilih Member...</option>
                                         @foreach ($user as $u)
-                                            <option value="{{ $u->id }}">{{ strtoupper($u->nama) }}</option>
+                                            <option value="{{ $u->id }}" {{ $membership->user_id == $u->id ? 'selected' : '' }}>
+                                                {{ strtoupper($u->nama) }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -44,11 +47,12 @@
                                     <label for="master_paket_id" class="form-label">Pilih Paket</label>
                                     <select class="form-select" name="master_paket_id" id="master_paket_id" required>
                                         <option selected disabled>Pilih Paket...</option>
-                                        {{-- <option value="">Harian</option> --}}
                                         @foreach ($masterPaket as $mp)
-                                            <option value="{{ $mp->id }}" data-harga="{{ $mp->harga }}">
+                                            <option value="{{ $mp->id }}" data-harga="{{ $mp->harga }}" 
+                                                {{ $membership->master_paket_id == $mp->id ? 'selected' : '' }}>
                                                 {{ $mp->nama_paket }} - {{ $mp->durasi }} Hari - Rp
-                                                {{ number_format($mp->harga) }}</option>
+                                                {{ number_format($mp->harga) }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -60,8 +64,11 @@
                                         @foreach ($masterSuplemen as $ms)
                                             @if($ms->stok > 0)
                                                 <option value="{{ $ms->id }}" data-harga="{{ $ms->harga }}"
-                                                    data-stok="{{ $ms->stok }}">{{ $ms->nama_suplemen }} - Rp
-                                                    {{ number_format($ms->harga) }} (Stok: {{ $ms->stok }})</option>
+                                                    data-stok="{{ $ms->stok }}"
+                                                    {{ $membership->master_suplemen_id == $ms->id ? 'selected' : '' }}>
+                                                    {{ $ms->nama_suplemen }} - Rp
+                                                    {{ number_format($ms->harga) }} (Stok: {{ $ms->stok }})
+                                                </option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -70,21 +77,21 @@
                                 <div class="col-md-12">
                                     <label for="jumlah_suplemen" class="form-label">Jumlah Suplemen (Opsional)</label>
                                     <input type="number" class="form-control" id="jumlah_suplemen" name="jumlah_suplemen"
-                                        min="0">
+                                        min="0" value="{{ $membership->jumlah_suplemen }}">
                                 </div>
 
                                 <div class="col-md-12">
                                     <label for="total_bayar" class="form-label">Total Bayar</label>
-                                    <input type="number" class="form-control" id="total_bayar" name="total_bayar" readonly required>
-
+                                    <input type="number" class="form-control" id="total_bayar" name="total_bayar" readonly required
+                                        value="{{ $membership->total_bayar }}">
                                 </div>
 
-                                <input type="hidden" name="metode_pembayaran" value="cash">
-                                <input type="hidden" name="member_status" value="aktif">
-                                <input type="hidden" name="status_pembayaran" value="success">
+                                <input type="hidden" name="metode_pembayaran" value="{{ $membership->metode_pembayaran }}">
+                                <input type="hidden" name="member_status" value="{{ $membership->member_status }}">
+                                <input type="hidden" name="status_pembayaran" value="{{ $membership->status_pembayaran }}">
 
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary px-5">Simpan</button>
+                                    <button type="submit" class="btn btn-primary px-5">Perbarui</button>
                                 </div>
                             </form>
                         </div>
