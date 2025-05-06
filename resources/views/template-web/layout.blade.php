@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Impact Bootstrap Template</title>
+  <title>RajaGym</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -50,7 +50,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="{{ asset('web') }}/assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">RajaGYM</h1>
+          <img src="{{ asset('env') }}/logo_text.png" width="auto" height="900" alt="Logo RajaGYM">
           <span>.</span>
         </a>
 

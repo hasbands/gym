@@ -6,14 +6,10 @@
         <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
             <div class="row gy-5 justify-content-between">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h2><span>Selamat Datang di </span><span class="accent">Impact</span></h2>
+                    <h2><span>Selamat Datang di </span><span class="accent">RajaGym</span></h2>
                     <p>Tempat terbaik untuk memulai perjalanan kebugaran Anda. Bergabunglah dengan kami dan capai tujuan kebugaran Anda.</p>
                     <div class="d-flex">
-                        <a href="#about" class="btn-get-started">Mulai</a>
-                        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center">
-                            <i class="bi bi-play-circle"></i>
-                            <span>Tonton Video</span>
-                        </a>
+                        <a href="#portfolio" class="btn-get-started">Ayo Bergabung!!</a>
                     </div>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2">
@@ -28,14 +24,14 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-easel"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link">Pelatih Profesional</a></h4>
+                            <h4 class="title"><a href="" class="stretched-link">Harga Terjangkau</a></h4>
                         </div>
                     </div>
 
                     <div class="col-xl-3 col-md-6">
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-gem"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link">Peralatan Modern</a></h4>
+                            <h4 class="title"><a href="" class="stretched-link">Fasilitas Lengkap</a></h4>
                         </div>
                     </div>
 
@@ -49,7 +45,7 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="icon-box">
                             <div class="icon"><i class="bi bi-command"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link">Program Beragam</a></h4>
+                            <h4 class="title"><a href="" class="stretched-link">Pelayanan Terbaik</a></h4>
                         </div>
                     </div>
                 </div>

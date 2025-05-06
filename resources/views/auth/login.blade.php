@@ -31,7 +31,7 @@
 				<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
 					<div class="col mx-auto">
 						<div class="mb-4 text-center mt-3">
-							<img src="https://st4.depositphotos.com/3265223/24936/v/450/depositphotos_249366040-stock-illustration-fitness-gym-logo-with-strong.jpg" width="180" alt="" />
+							<img src="{{ asset('env') }}/logo_text.png" width="auto" height="100" alt="" />
 						</div>
 						<div class="card">
 							<div class="card-body">

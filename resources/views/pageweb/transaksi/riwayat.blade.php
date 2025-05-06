@@ -45,10 +45,17 @@
                                             </td>
                                             <td>{{ date('d/m/Y H:i', strtotime($item->created_at)) }}</td>
                                             <td>
-                                                <a href="{{ route('web.success_membership', ['order_id' => $item->order_id]) }}"
-                                                    class="btn btn-sm btn-primary">
-                                                    Detail
-                                                </a>
+                                                @if($item->status_pembayaran == 'success')
+                                                    <a href="{{ route('web.success_membership', ['order_id' => $item->order_id]) }}"
+                                                        class="btn btn-sm btn-primary">
+                                                        Detail
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('web.transaksi_detail', ['id' => $item->order_id]) }}"
+                                                        class="btn btn-sm btn-primary">
+                                                        Lanjutkan Pembayaran
+                                                    </a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

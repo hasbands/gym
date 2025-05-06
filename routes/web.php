@@ -17,6 +17,7 @@ use App\Http\Controllers\web\{
     ListPaketController,
     TransaksiController,
     RiwayatTransaksiController,
+    ProfilUserController,
 };
 
 use App\Http\Controllers\{
@@ -72,5 +73,8 @@ Route::post('/add-membership', [TransaksiController::class, 'addMembership'])->n
 Route::get('/transaksi-detail/{id}', [TransaksiController::class, 'transaksi_detail'])->name('web.transaksi_detail');
 Route::get('/transaksi/success/{order_id}', [TransaksiController::class, 'success'])->name('web.success_membership');
 Route::get('/riwayat-transaksi', [RiwayatTransaksiController::class, 'index'])->name('web.riwayat_transaksi');
+Route::get('/profil', [ProfilUserController::class, 'index'])->name('web.profil');
+Route::put('/profil/update/{id}', [ProfilUserController::class, 'update'])->name('web.profil.update');
+Route::get('/cetak-kartu', [ProfilUserController::class, 'cetakkartu'])->name('web.cetak_kartu');
 // });
 //user
