@@ -24,8 +24,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <p class="mb-0 text-secondary">Jumlah Keuntungan Mingguan</p>
-                                    <h4 class="my-1 text-danger">Rp. {{ number_format($keuntungan_mingguan, 0, ',', '.') }}</h4>
+                                    <p class="mb-0 text-secondary">Jumlah Keuntungan Bulanan</p>
+                                    <h4 class="my-1 text-danger">Rp. {{ number_format($keuntunganbulanan, 0, ',', '.') }}</h4>
                                 </div>
                                 <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i
                                         class='bx bxs-calendar-week'></i>
@@ -39,8 +39,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <p class="mb-0 text-secondary">Jumlah Keuntungan Bulanan</p>
-                                    <h4 class="my-1 text-success">Rp. {{ number_format($keuntungan_bulanan, 0, ',', '.') }}</h4>
+                                    <p class="mb-0 text-secondary">Jumlah Keuntungan Harian</p>
+                                    <h4 class="my-1 text-success">Rp. {{ number_format($keuntunganharian, 0, ',', '.') }}</h4>
                                 </div>
                                 <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i
                                         class='bx bxs-calendar'></i>

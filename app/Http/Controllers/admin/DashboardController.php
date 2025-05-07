@@ -14,9 +14,9 @@ class DashboardController extends Controller
 {
  public function index(){
     $member_aktif = Membership::where('member_status', 'aktif')->count();
-    $keuntungan_mingguan = Membership::where('created_at', '>=', now()->startOfWeek())->where('created_at', '<=', now()->endOfWeek())->sum('total_bayar');
+    $keuntunganbulanan = Membership::where('created_at', '>=', now()->startOfMonth())->where('created_at', '<=', now()->endOfMonth())->sum('total_bayar');
     $jumlah_suplemen = MasterSuplemen::count();
-    $keuntungan_bulanan = PaketHarian  ::where('created_at', '>=', now()->startOfMonth())->where('created_at', '<=', now()->endOfMonth())->sum('harga');
-    return view('pageadmin.dashboard.index', compact('member_aktif', 'keuntungan_mingguan', 'jumlah_suplemen', 'keuntungan_bulanan'));
+    $keuntunganharian = PaketHarian  ::where('created_at', '>=', now()->startOfDay())->where('created_at', '<=', now()->endOfDay())->sum('harga');
+    return view('pageadmin.dashboard.index', compact('member_aktif', 'keuntunganbulanan', 'jumlah_suplemen', 'keuntunganharian'));
  }
 }

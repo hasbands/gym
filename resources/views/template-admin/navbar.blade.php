@@ -39,4 +39,11 @@
             <div class="menu-title">PAKET HARIAN</div>
         </a>
     </li>
+    <li class="menu-label">LAPORAN</li>
+    <li>
+        <a href="/laporan">
+            <div class="parent-icon"><i class='bx bx-file'></i></div>
+            <div class="menu-title">LAPORAN</div>
+        </a>
+    </li>
 </ul>

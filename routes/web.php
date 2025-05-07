@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\{
     WhatsappApiController,
     AddMembershipController,
     PaketHarianController,
+    LaporanController,
 };
 use App\Http\Controllers\web\{
     WebController,
@@ -19,7 +20,6 @@ use App\Http\Controllers\web\{
     RiwayatTransaksiController,
     ProfilUserController,
 };
-
 use App\Http\Controllers\{
     LoginController,
     RegisterController,
@@ -60,6 +60,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('whatsappApi', [WhatsappApiController::class, 'storeorupdate'])->name('whatsappApi.storeorupdate');
     Route::resource('add-membership', AddMembershipController::class);
     Route::resource('paket-harian', PaketHarianController::class);
+    Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('laporan/bulanan', [LaporanController::class, 'laporanbulanan'])->name('laporan.laporanbulanan');
+    Route::get('laporan/harian', [LaporanController::class, 'laporanharian'])->name('laporan.laporanharian');
 });
 //admin
 
