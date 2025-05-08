@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laporan Bulanan {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('MMMM Y') }}</title>
+    <title>Laporan Bulanan</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         * {
@@ -121,54 +122,66 @@
 </head>
 
 <body>
-    <div class="pages">
-        <div class="header">
-            <img src="{{ asset('env/logo_text.png') }}" alt="Logo">
-            <div>
-                <h3>Laporan Bulanan {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('MMMM Y') }}</h3>
+    @if($laporan->isEmpty())
+        <script>
+            Swal.fire({
+                icon: 'warning',
+                title: 'Peringatan',
+                text: 'Data bulan ini tidak ada',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('laporan.index') }}";
+                }
+            });
+        </script>
+    @else
+        <div class="pages">
+            <div class="header">
+                <img src="{{ asset('env/logo_text.png') }}" alt="Logo">
+                <div>
+                    <h3>Laporan Bulanan {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('MMMM Y') }}</h3>
+                </div>
+            </div>
+            <div class="info">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Member</th>
+                            <th>Nama Paket</th>
+                            <th>Nama Suplemen</th>
+                            <th>Mulai</th>
+                            <th>Selesai</th>
+                            <th>Jumlah Bayar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($laporan as $key => $item)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $item->user->nama }}</td>
+                                <td>{{ $item->masterPaket->nama_paket }}</td>
+                                <td>{{ $item->masterSuplemen->nama_suplemen ?? '-' }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->mulai)->locale('id')->isoFormat('D MMMM Y') ?? '-' }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->selesai)->locale('id')->isoFormat('D MMMM Y') ?? '-' }}</td>
+                                <td>Rp. {{ number_format($item->total_bayar, 0, ',', '.') ?? '-' }}</td>
+                            </tr>
+                        @endforeach
+                        <tr class="very-bold">
+                            <td colspan="6" style="text-align: right;">Total Keuntungan {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('MMMM Y') }}:</td>
+                            <td>Rp. {{ number_format($laporan->sum('total_bayar'), 0, ',', '.') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="info">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Member</th>
-                        <th>Nama Paket</th>
-                        <th>Nama Suplemen</th>
-                        <th>Mulai</th>
-                        <th>Selesai</th>
-                        <th>Jumlah Bayar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($laporan as $key => $item)
-                        <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $item->user->nama }}</td>
-                            <td>{{ $item->masterPaket->nama_paket }}</td>
-                            <td>{{ $item->masterSuplemen->nama_suplemen ?? '-' }}</td>
-                            <td>{{ \Carbon\Carbon::parse($item->mulai)->locale('id')->isoFormat('D MMMM Y') ?? '-' }}</td>
-                            <td>{{ \Carbon\Carbon::parse($item->selesai)->locale('id')->isoFormat('D MMMM Y') ?? '-' }}</td>
-                            <td>Rp. {{ number_format($item->total_bayar, 0, ',', '.') ?? '-' }}</td>
-                         
-                            
-                        </tr>
-                    @endforeach
-                    <tr class="very-bold">
-                        <td colspan="6" style="text-align: right;">Total Keuntungan {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('MMMM Y') }}:</td>
-                        <td>Rp. {{ number_format($laporan->sum('total_bayar'), 0, ',', '.') }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-    </div>
-    <script>
-        window.onload = function() {
-            window.print();
-        };
-    </script>
+        <script>
+            window.onload = function() {
+                window.print();
+            };
+        </script>
+    @endif
 </body>
 
 </html>
