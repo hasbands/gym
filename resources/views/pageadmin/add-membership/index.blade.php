@@ -20,9 +20,9 @@
         <hr/>
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('add-membership.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
-                <a href="{{ route('add-membership.cekstatus') }}" class="btn btn-warning mb-3">Cek Status Membership</a>
-                <a href="{{ route('add-membership.sendmessage') }}" class="btn btn-success mb-3">Kirim Pesan</a>
+                <a href="{{ route('adminMembership.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                <a href="{{ route('adminMembership.cekstatus') }}" class="btn btn-warning mb-3">Cek Status Membership</a>
+                <a href="{{ route('adminMembership.sendmessage') }}" class="btn btn-success mb-3">Kirim Pesan</a>
                 <!-- Tambahkan input pencarian -->
                 <div class="mb-3">
                     <input type="text" id="searchInput" class="form-control" placeholder="Cari berdasarkan nama...">
@@ -64,8 +64,8 @@
                                 <td>Rp. {{ number_format($f->total_bayar, 0, ',', '.') }}</td>
                                 <td><span class="badge bg-{{ $f->status_pembayaran == 'success' ? 'success' : 'danger' }}">{{ $f->status_pembayaran ?? '-' }}</span></td>
                                 <td>
-                                    <a href="{{ route('add-membership.edit', $f->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form action="{{ route('add-membership.destroy', $f->id) }}" method="POST" style="display:inline;" class="delete-form">
+                                    <a href="{{ route('adminMembership.edit', $f->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <form action="{{ route('adminMembership.destroy', $f->id) }}" method="POST" style="display:inline;" class="delete-form">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>

@@ -84,7 +84,7 @@
 
                         <div class="position-relative mt-4">
                             <img src="{{ asset('web') }}/img/about-2.jpg" class="img-fluid rounded-4" alt="">
-                            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+                           
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                         <div class="faq-item">
                             <h3><span class="num">3.</span> <span>Berapa lama waktu operasional gym?</span></h3>
                             <div class="faq-content">
-                                <p>Gym kami buka setiap hari dari pukul 06.00 hingga 22.00 WIB.</p>
+                                <p>Gym kami buka setiap hari dari pukul 14.00 hingga 22.00 WIB.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div>

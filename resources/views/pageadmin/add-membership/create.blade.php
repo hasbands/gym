@@ -28,7 +28,7 @@
                                 <h5 class="mb-0 text-primary">Tambah Membership</h5>
                             </div>
                             <hr>
-                            <form action="{{ route('add-membership.store') }}" method="POST" class="row g-3">
+                            <form action="{{ route('adminMembership.store') }}" method="POST" class="row g-3">
                                 @csrf
                                 <div class="col-md-12">
                                     <label for="user_id" class="form-label">Pilih Member</label>
