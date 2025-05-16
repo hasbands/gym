@@ -36,11 +36,11 @@ use App\Http\Controllers\{
 */
 
 // CEK STATUS MEMBERSHIP
-Route::get('cekstatus', [AddMembershipController::class, 'cekstatus'])->name('add-membership.cekstatus');
+Route::get('cekstatus', [AddMembershipController::class, 'cekstatus'])->name('adminMembership.cekstatus');
 // CEK STATUS MEMBERSHIP
 
 // SEND MESSAGE
-Route::get('sendmessage', [AddMembershipController::class, 'sendmessage'])->name('add-membership.sendmessage');
+Route::get('sendmessage', [AddMembershipController::class, 'sendmessage'])->name('adminMembership.sendmessage');
 // SEND MESSAGE
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -58,7 +58,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('masterPaket', MasterPaketController::class);
     Route::get('whatsappApi', [WhatsappApiController::class, 'index'])->name('whatsappApi.index');
     Route::post('whatsappApi', [WhatsappApiController::class, 'storeorupdate'])->name('whatsappApi.storeorupdate');
-    Route::resource('add-membership', AddMembershipController::class);
+    Route::resource('adminMembership', AddMembershipController::class);
     Route::resource('paket-harian', PaketHarianController::class);
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
     Route::get('laporan/bulanan', [LaporanController::class, 'laporanbulanan'])->name('laporan.laporanbulanan');

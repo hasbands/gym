@@ -138,12 +138,17 @@
                 });
             </script>
         @else
-            <div class="header">
-                <img src="{{ asset('env/logo_text.png') }}" alt="Logo">
-                <div>
-                    <h3>Laporan Harian {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('D MMMM Y') }}</h3>
-                </div>
+        <div class="header">
+            <div>
+                <h3 class="fw-bold">LAPORAN DATA HARIAN
+                    {{ strtoupper(\Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('D MMMM Y')) }}
+                    RAJA GYM</h3>
+                <h4>Telp : +6282286849598</h4>
+                <h4>Jl. Perintis Kemerdekaan, Kelurahan Simpang Tiga Teluk Kuantan</h4>
+                <h4>Tahun : {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('Y') }}</h4>
+                <hr>
             </div>
+        </div>
             <div class="info">
                 <table class="table table-bordered">
                     <thead>
@@ -162,11 +167,20 @@
                             </tr>
                         @endforeach
                         <tr class="very-bold">
-                            <td colspan="2" style="text-align: right;">Total Keuntungan {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('D MMMM Y') ?? '-' }}:</td>
+                            <td colspan="2" style="text-align: right;">Total Pemasukan {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('D MMMM Y') ?? '-' }}:</td>
                             <td>Rp. {{ number_format($laporan->sum('harga'), 0, ',', '.') ?? '-' }}</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <hr>
+            <div style="text-align: right; margin-top: 50px;">
+                <p>Teluk Kuantan, {{ \Carbon\Carbon::now()->locale('id')->isoFormat('D MMMM Y') }}</p>
+                <br><br>
+                <img src="{{ asset('env/ttd.png') }}" alt="Tanda Tangan" style="width: 150px; height: auto; margin-bottom: -30px; margin-top: -50px;">
+                <br><br>
+                <p style="text-decoration: underline;">Juan Priandi</p>
+                <p>Pemilik Raja Gym</p>
             </div>
         @endif
     </div>

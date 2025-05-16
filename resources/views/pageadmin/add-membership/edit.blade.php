@@ -28,7 +28,7 @@
                                 <h5 class="mb-0 text-primary">Edit Membership</h5>
                             </div>
                             <hr>
-                            <form action="{{ route('add-membership.update', $membership->id) }}" method="POST" class="row g-3">
+                            <form action="{{ route('adminMembership.update', $membership->id) }}" method="POST" class="row g-3">
                                 @csrf
                                 @method('PUT')
                                 <div class="col-md-12">

@@ -116,7 +116,7 @@ class AddMembershipController extends Controller
         ]);
 
         Alert::success('Success', 'Membership berhasil dibuat');
-        return redirect()->route('add-membership.index');
+        return redirect()->route('adminMembership.index');
     }
 
     public function edit($id)
@@ -169,7 +169,7 @@ class AddMembershipController extends Controller
         ]);
 
         Alert::success('Sukses', 'Data membership berhasil diperbarui');
-        return redirect()->route('add-membership.index');
+        return redirect()->route('adminMembership.index');
     }
 
     public function destroy($id)
@@ -178,7 +178,7 @@ class AddMembershipController extends Controller
         $membership->delete();
 
         Alert::success('Sukses', 'Data membership berhasil dihapus');
-        return redirect()->route('add-membership.index');
+        return redirect()->route('adminMembership.index');
     }
 
     public function cekstatus(Request $request)
@@ -197,7 +197,7 @@ class AddMembershipController extends Controller
         }
 
         Alert::success('Success', 'Status membership berhasil diperbarui');
-        return redirect()->route('add-membership.index');
+        return redirect()->route('adminMembership.index');
     }
 
     public function sendmessage()
@@ -208,7 +208,7 @@ class AddMembershipController extends Controller
         
         if($memberships->isEmpty()) {
             Alert::warning('Peringatan', 'Tidak ada membership yang akan berakhir besok');
-            return redirect()->route('add-membership.index');
+            return redirect()->route('adminMembership.index');
         }
 
         // Ambil nomor whatsapp dari user
@@ -224,6 +224,6 @@ class AddMembershipController extends Controller
         }
 
         Alert::success('Sukses', 'Pesan berhasil dikirim ke semua member');
-        return redirect()->route('add-membership.index');
+        return redirect()->route('adminMembership.index');
     }
 }
