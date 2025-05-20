@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
     <title>Laporan Bulanan</title>
+=======
+    <title>Laporan Bulanan {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('MMMM Y') }}
+    </title>
+>>>>>>> a36b8389af00220eaecff74dd0c23980718a5cc3
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -122,6 +127,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     @if($laporan->isEmpty())
         <script>
             Swal.fire({
@@ -182,6 +188,73 @@
             };
         </script>
     @endif
+=======
+    <div class="pages">
+        <div class="header">
+            <div>
+                <h3 class="fw-bold">LAPORAN DATA BULAN
+                    {{ strtoupper(\Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('MMMM')) }}
+                    RAJA GYM</h3>
+                <h4>Telp : +6282286849598</h4>
+                <h4>Jl. Perintis Kemerdekaan, Kelurahan Simpang Tiga Teluk Kuantan</h4>
+                <h4>Tahun : {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('Y') }}</h4>
+                <hr>
+            </div>
+        </div>
+        <div class="info">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Member</th>
+                        <th>Nama Paket</th>
+                        <th>Nama Suplemen</th>
+                        <th>Mulai</th>
+                        <th>Selesai</th>
+                        <th>Jumlah Bayar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($laporan as $key => $item)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $item->user->nama }}</td>
+                            <td>{{ $item->masterPaket->nama_paket }}</td>
+                            <td>{{ $item->masterSuplemen->nama_suplemen ?? '-' }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->mulai)->locale('id')->isoFormat('D MMMM Y') ?? '-' }}
+                            </td>
+                            <td>{{ \Carbon\Carbon::parse($item->selesai)->locale('id')->isoFormat('D MMMM Y') ?? '-' }}
+                            </td>
+                            <td>Rp. {{ number_format($item->total_bayar, 0, ',', '.') ?? '-' }}</td>
+
+
+                        </tr>
+                    @endforeach
+                    <tr class="very-bold">
+                        <td colspan="6" style="text-align: right;">Total Pemasukan
+                            {{ \Carbon\Carbon::parse($laporan->first()->created_at)->locale('id')->isoFormat('MMMM Y') }}:
+                        </td>
+                        <td>Rp. {{ number_format($laporan->sum('total_bayar'), 0, ',', '.') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div style="text-align: right; margin-top: 50px;">
+            <p>Teluk Kuantan, {{ \Carbon\Carbon::now()->locale('id')->isoFormat('D MMMM Y') }}</p>
+            <br><br>
+            <img src="{{ asset('env/ttd.png') }}" alt="Tanda Tangan" style="width: 150px; height: auto; margin-bottom: -30px; margin-top: -50px;">
+            <br><br>
+            <p style="text-decoration: underline;">Juan Priandi</p>
+            <p>Pemilik Raja Gym</p>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            window.print();
+        };
+    </script>
+>>>>>>> a36b8389af00220eaecff74dd0c23980718a5cc3
 </body>
 
 </html>
