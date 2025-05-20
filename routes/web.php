@@ -35,6 +35,9 @@ use App\Http\Controllers\{
 |
 */
 
+Route::get('/generateqr', [ProfilUserController::class, 'generateqr'])->name('generateqr');
+Route::get('/outputqr/{order_id}', [ProfilUserController::class, 'outputqr'])->name('outputqr');
+
 // CEK STATUS MEMBERSHIP
 Route::get('cekstatus', [AddMembershipController::class, 'cekstatus'])->name('adminMembership.cekstatus');
 // CEK STATUS MEMBERSHIP

@@ -157,6 +157,12 @@
                                                         Cetak Kartu Member
                                                     </a>
                                                 </div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <a href="{{ route('generateqr') }}" target="_blank" class="btn btn-primary w-100">
+                                                        <i class="fas fa-qrcode me-2"></i>
+                                                        Generate QR Code
+                                                    </a>
+                                                </div>
                                             </div>
                                         @else
                                             <div class="alert alert-warning">
